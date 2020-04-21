@@ -30,9 +30,7 @@ function procesamientoRegionController($nombreArchivo)
       }
     }
   }
-
   $regionInfo = procesamientoRegionInfo($nombreArchivo, $posicionReg, $posicionClaveReg, $posicionNombreReg, $posicionClaveEdo);
   echo $regionInfo;
-
 }
  ?>
