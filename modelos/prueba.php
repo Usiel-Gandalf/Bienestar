@@ -1,64 +1,30 @@
 <?php
-require_once("estado.php");
-require_once("region.php");
-require_once("municipio.php");
+if (mysqli_num_rows($comprobarMunicipio)==1) {
+    $municipioExistente++;
+} else {
+    registrarMunicipio($clave_municipio, $nombre_municipio, $clave_region);
+    $municipio++;
+}
 
-  function procesamientoPruebaInfo($nombreArchivo)
-  {
-    $fp = fopen($nombreArchivo, "r");
-    $fila = 0;
-    $posicionClaveEdo;
-    $posicionNombreEdo;
-    $posicionClaveMun;
-    $posicionNombreMun;
-    $posicionReg;
-    $posicionClaveReg;
-    $posicionNombreReg;
+if (mysqli_num_rows($comprobarLocalidad)==1) {
+    $localidadExistente++;
+} else {
+  registrarLocalidad($clave_localidad, $nombre_localidad, $clave_municipio);
+  $localidad++;
+}
 
-    while ($datos = fgetcsv($fp, 0, ";")) {
-      $numeroColumnas = count($datos);
+if (mysqli_num_rows($comprobarEscuela)==1) {
+    $escuelaExistente++;
+} else {
+  registrarEscuela($clave_escuela, $nombre_escuela, $clave_localidad);
+  $escuela++;
+}
 
-      for ($i=0; $i <$numeroColumnas ; $i++) {
-
-        if ($datos[$i] == "CVE_EDO") {
-          $posicionClaveEdo = $i;
-        }
-
-        if ($datos[$i] == "NOM_EDO") {
-        $posicionNombreEdo = $i;
-        }
-
-        if ($datos[$i] == "REGION") {
-        $posicionReg = $i;
-        }
-
-        if ($datos[$i] == "ID_REGION") {
-        $posicionClaveReg = $i;
-        }
-
-        if ($datos[$i] == "NOM_REG") {
-        $posicionNombreReg = $i;
-        }
-
-        if ($datos[$i] == "CVE_MUN") {
-          $posicionClaveMun = $i;
-        }
-
-        if ($datos[$i] == "NOM_MUN") {
-          $posicionNombreMun = $i;
-        }
-      }
-      $fila++;
-    }
-      echo "Procesando informacion, por favor espere.....";
-      $estadoInfo = procesamientoEstadoInfo($nombreArchivo, $posicionClaveEdo, $posicionNombreEdo);
-      echo $estadoInfo;
-      $regionInfo = procesamientoRegionInfo($nombreArchivo, $posicionReg, $posicionClaveReg, $posicionNombreReg, $posicionClaveEdo);
-    //  $municipioInfo = procesamientoMunicipioInfo($nombreArchivo, $posicionNombreMun, $posicionClaveMun);
-
-
-      echo $regionInfo;
-      //echo $municipioInfo;
-  }
-
+if (mysqli_num_rows($comprobarBecario)==1) {
+    $becarioExistente++;
+} else {
+  registrarBecario($clave_becario, $nombre_becario, $apellido_paterno, $apellido_materno, $genero_becario,
+                   $fecha_nacimiento, $curp_becario, $clave_escuela);
+  $becario++;
+}
  ?>
