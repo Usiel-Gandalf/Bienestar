@@ -105,8 +105,15 @@ function procesarMainController($nombreArchivo) // funcion que recibe el archivo
       } // fin del for
     } // fin del if
 
-    elseif ($fila > 1) { // comienza a leer los datos en sus posiciones especificas
+    elseif ($fila >= 1) { // comienza a leer los datos en sus posiciones especificas
       $becario = $fila;
+      //date_default_timezone_set("America/Mexico_City");
+      //$fecha = $datos[$posicionFechaNaBecario];
+      //$fecha_correcta = date_format($fecha, 'Y-m-d');
+      //$fecha= strtotime($fecha);
+      //$fecha_correcta = date("Y/m/d", $fecha);
+    //  echo ´<script></script>´;
+
       $becario = [ // guarda los datos de manera precisa en un array
         "claveEstado" => $datos[$posicionClaveEdo],
         //"nombreEstado" => $datos[$posicionNombreEdo],

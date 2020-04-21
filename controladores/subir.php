@@ -1,5 +1,4 @@
 <?php
-
 require_once("main.php");
 
   if (isset($_POST["subir"])) { // ¿Que nivel de base de datos es?
@@ -9,18 +8,6 @@ require_once("main.php");
     $comprobarCopia = copy($archivoCopiado, $nombreArchivo);
 
     if ($comprobarCopia) {
-      /*  $procesarEstadoController = procesamientoEstadoController($nombreArchivo);
-        echo $procesarEstadoController;
-        $procesarRegionController = procesamientoRegionController($nombreArchivo);
-        echo $procesarRegionController;
-        $procesarMunicipioController = procesamientoMunicipioController($nombreArchivo);
-        echo $procesarMunicipioController;
-        $procesarLocalidadController = procesamientoLocalidadController($nombreArchivo);
-        echo $procesarLocalidadController;
-        $procesarEscuelaController = procesamientoEscuelaController($nombreArchivo);
-        echo $procesarEscuelaController;*/
-        //$procesarBecarioController = procesamientoBecarioController($nombreArchivo);
-        //echo $procesarBecarioController;
         $procesarMainController = procesarMainController($nombreArchivo);
         print_r($procesarMainController);
 

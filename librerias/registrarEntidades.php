@@ -50,5 +50,13 @@ function registrarBecario($clave_becario, $nombre_becario, $apellido_paterno, $a
   return $comprobarConsulta;
 }
 
+function fecha($fecha)
+{
+  global $conexion;
+  $registrarFecha = "INSERT INTO fecha(fecha) VALUES('$fecha')";
+  $comprobarConsulta = mysqli_query($conexion, $registrarFecha);
+  return $comprobarConsulta;
+}
+
 
  ?>
