@@ -1,9 +1,5 @@
 <?php
-require_once("estadoController.php");
-require_once("regionController.php");
-require_once("municipioController.php");
-require_once("localidadController.php");
-require_once("escuelaController.php");
+
 require_once("main.php");
 
   if (isset($_POST["subir"])) { // ¿Que nivel de base de datos es?
