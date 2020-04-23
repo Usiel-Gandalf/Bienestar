@@ -107,12 +107,12 @@ function procesarMainController($nombreArchivo) // funcion que recibe el archivo
 
     elseif ($fila >= 1) { // comienza a leer los datos en sus posiciones especificas
       $becario = $fila;
-      //date_default_timezone_set("America/Mexico_City");
-      //$fecha = $datos[$posicionFechaNaBecario];
-      //$fecha_correcta = date_format($fecha, 'Y-m-d');
-      //$fecha= strtotime($fecha);
-      //$fecha_correcta = date("Y/m/d", $fecha);
-    //  echo ´<script></script>´;
+      $fecha = $datos[$posicionFechaNaBecario];
+      $fecha_sin_formato = str_replace("/", "", $fecha);
+      $anio = substr($fecha_sin_formato, -4);
+      $mes = substr($fecha_sin_formato, -6, 2);
+      $dia = substr($fecha_sin_formato, -8, 2);
+      $fecha_con_formato= $anio."-".$mes."-".$dia;
 
       $becario = [ // guarda los datos de manera precisa en un array
         "claveEstado" => $datos[$posicionClaveEdo],
@@ -131,7 +131,7 @@ function procesarMainController($nombreArchivo) // funcion que recibe el archivo
         "apellidoPaterno" => $datos[$posicionApellidoPBecario],
         "apellidoMaterno" => $datos[$posicionApellidoMBecario],
         "generoBecario" => $datos[$posicionGeneroBecario],
-        "fechaNacimiento" => $datos[$posicionFechaNaBecario],
+        "fechaNacimiento" => $fecha_con_formato,
         "curpBecario" => $datos[$posicionCurpBecario]
       ]; // fin del array
         array_push ($becarios , $becario); // se agregan fila por fila los becarios al array principal
