@@ -1,5 +1,7 @@
 <?php
 require_once("../modelos/main.php");
+
+require_once '../librerias/formatoArray.php';
 function procesarMainController($nombreArchivo) // funcion que recibe el archivo excel/csv
 {
   $fp = fopen($nombreArchivo, "r"); //se lee el archivo csv
@@ -59,7 +61,7 @@ function procesarMainController($nombreArchivo) // funcion que recibe el archivo
         $posicionNombreMun = $i;
         }
 
-        if ($datos[$i] == "CVE_LOC") {
+        if ($datos[$i] == "CLAVEOFI") {
         $posicionClaveLoc = $i;
         }
 
@@ -116,7 +118,7 @@ function procesarMainController($nombreArchivo) // funcion que recibe el archivo
 
       $becario = [ // guarda los datos de manera precisa en un array
         "claveEstado" => $datos[$posicionClaveEdo],
-        //"nombreEstado" => $datos[$posicionNombreEdo],
+        "nombreEstado" => $datos[$posicionNombreEdo],
         "claveRegion" => $datos[$posicionClaveReg],
         "region" => $datos[$posicionReg],
         "nombreRegion" => $datos[$posicionNombreReg],
@@ -140,7 +142,8 @@ function procesarMainController($nombreArchivo) // funcion que recibe el archivo
     $fila++;
   } // fin del while
 
-$procesamientoMain = procesamientoMainInfo($becarios);
-echo $procesamientoMain;
+//$procesamientoMain = procesamientoMainInfo($becarios);
+$array_estructurado = formatoArray($becarios);
+//echo $procesamientoMain;
 }
  ?>
