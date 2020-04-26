@@ -1,13 +1,17 @@
 <?php
 require_once("../modelos/main.php");
-require_once '../librerias/formatoArray.php';
+
+require_once '../librerias/arrays/mainArray.php';
 function procesarMainController($nombreArchivo) // funcion que recibe el archivo excel/csv
 {
   $fp = fopen($nombreArchivo, "r"); //se lee el archivo csv
   $fila = 0;
+  $posicionClaveReg;
   $posicionClaveMun;
   $posicionClaveLoc;
   $posicionClaveEsc;
+  $posicionReg;
+  $posicionNombreReg;
   $posicionNombreMun;
   $posicionNombreLoc;
   $posicionNombreEsc;
@@ -27,6 +31,18 @@ function procesarMainController($nombreArchivo) // funcion que recibe el archivo
     if ($fila == 0) {
 
       for ($i=0; $i <$numeroColumnas ; $i++) {// se leen las columnas y se asignan sugun sus condiciones
+
+        if ($datos[$i] == "REGION") {
+        $posicionReg = $i;
+        }
+
+        if ($datos[$i] == "ID_REGION") {
+        $posicionClaveReg = $i;
+        }
+
+        if ($datos[$i] == "NOM_REG") {
+        $posicionNombreReg = $i;
+        }
 
         if ($datos[$i] == "CVE_MUN") {
         $posicionClaveMun = $i;
@@ -92,6 +108,9 @@ function procesarMainController($nombreArchivo) // funcion que recibe el archivo
       $fecha_con_formato= $anio."-".$mes."-".$dia;
 
       $becario = [ // guarda los datos de manera precisa en un array
+        "claveRegion" => $datos[$posicionClaveReg],
+        "region" => $datos[$posicionReg],
+        "nombreRegion" => $datos[$posicionNombreReg],
         "claveMunicipio" => $datos[$posicionClaveMun],
         "nombreMunicipio" => $datos[$posicionNombreMun],
         "claveLocalidad" => $datos[$posicionClaveLoc],
