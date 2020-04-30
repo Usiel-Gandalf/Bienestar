@@ -1,10 +1,7 @@
 <?php
-require_once("../modelos/main.php");
-
-require_once '../librerias/arrays/mainArray.php';
-function procesarMainController($nombreArchivo) // funcion que recibe el archivo excel/csv
+function universoArray($entidadUniverso) // funcion que recibe el archivo excel/csv
 {
-  $fp = fopen($nombreArchivo, "r"); //se lee el archivo csv
+  $fp = fopen($entidadUniverso, "r"); //se lee el archivo csv
   $fila = 0;
   $posicionClaveReg;
   $posicionClaveMun;
@@ -142,9 +139,6 @@ function procesarMainController($nombreArchivo) // funcion que recibe el archivo
 
     $fila++;
   } // fin del while
-
-//$procesamientoMain = procesamientoMainInfo($becarios);
-$array_estructurado = formatoArray($becarios);
-//echo $procesamientoMain;
+  return $becarios;
 }
  ?>

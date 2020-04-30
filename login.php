@@ -6,7 +6,7 @@
     <title></title>
   </head>
   <body>
-    <form action="controladores/subir.php" method="POST" enctype="multipart/form-data">
+    <form action="controladores/universo.php" method="POST" enctype="multipart/form-data">
       <input type="file" name="archivo" />
       <br><br>
       <input type="submit" name="subir" value="Subir" />

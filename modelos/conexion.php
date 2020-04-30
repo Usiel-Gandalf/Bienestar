@@ -1,18 +1,28 @@
 <?php
-  $host = "localhost";
-  $baseDeDatosPrincipal = "sao";
-  $usuario = "root";
-  $contraseña = "";
+  class Conexion
+  {
+    private $host = "localhost";
+    private $baseDeDatosPrincipal = "sao";
+    private $usuario = "root";
+    private $contraseña = "";
+    private $conexion;
 
-  $tablaAdministradores = "administrador";
+    function __construct()
+    {
 
-  $conexion = new mysqli($host, $usuario, $contraseña, $baseDeDatosPrincipal);
+      $this->conexion = new mysqli($this->host, $this->usuario, $this->contraseña, $this->baseDeDatosPrincipal);
+      if ($this->conexion->connect_errno) {
+        echo "Fallo al conectar a MySQL: (" . $cthis->conexion->connect_errno . ") " . $this->conexion->connect_error;
+      }
+      else {
+      }
+    }
 
-  if ($conexion->connect_errno) {
-    echo "Fallo al conectar a MySQL: (" . $conexion->connect_errno . ") " . $conexion->connect_error;
+    public function conexionBD()
+    {
+      echo "conectado";
+      return $this->conexion;
+
+    }
   }
-  else {
-
-  }
-
  ?>
