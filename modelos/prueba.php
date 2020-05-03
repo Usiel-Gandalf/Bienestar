@@ -1,4 +1,28 @@
 <?php
+$consulta = $this->conexion->stmt_init();
+$consulta->prepare("SELECT * FROM region WHERE clave_region = $valor");
+$consulta->execute();
+if ($consulta->fetch() != null) {
+  echo "la region existe <br>";
+  //$consulta->close();
+  $this->conexion->close();
+}else {
+  echo "no existe la region <br>";
+  //$consulta->close();
+  $this->conexion->close();
+}
+
+
+
+
+
+
+
+
+
+
+
+
 
 $host = "localhost";
 $baseDeDatosPrincipal = "sao";
